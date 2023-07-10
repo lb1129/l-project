@@ -8,9 +8,9 @@ export const patch = () => {
   div.classList.add(styleLess.text)
   div.textContent = 'div content'
   div.onclick = async () => {
+    div.textContent = 'div content clicked'
     const module = await import('@/lazy/index')
     module.default(div)
-    div.textContent = 'div content clicked'
   }
   document.body.appendChild(div)
 }
