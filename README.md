@@ -42,9 +42,9 @@
 # 克隆项目
 git clone https://github.com/lb1129/l-project.git
 
-# 清空src目录（保留 main.ts, app-env.d.ts）
+# main.ts app-env.d.ts 这两个文件保留，其余src目录及文件可清空
 
-# 清空main.ts内容
+# main.ts 第一行内容保留，其余内容可清空
 
 # 加入你的内容
 ```
