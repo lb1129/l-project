@@ -9,6 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
@@ -184,6 +185,9 @@ module.exports = {
     type: 'filesystem'
   },
   plugins: [
+    new ESLintPlugin({
+      extensions: ['js', 'ts']
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin(resolveClientEnv()),
