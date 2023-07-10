@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require('terser-webpack-plugin')
@@ -148,7 +149,7 @@ module.exports = {
       }
     ]
   },
-  performance: {
+  performance: IS_ANALYZE ? false : {
     // warn 500K
     maxAssetSize: 500000,
     maxEntrypointSize: 500000
@@ -185,6 +186,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolveApp('public/index.html'),
       templateParameters: resolveClientEnv(true)
+    }),
+    IS_ANALYZE && isProduction && new BundleAnalyzerPlugin({
+      generateStatsFile: true
     }),
     isProduction && new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css'
