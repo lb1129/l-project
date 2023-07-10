@@ -1,6 +1,6 @@
 <h1 align="center">L-PROJECT</h1>
 
-<p align="center">一个基础脚手架</p>
+<p align="center">一个单入口的基础脚手架</p>
 
 <p align="center">
   <a href="https://github.com/webpack/webpack">
@@ -35,6 +35,19 @@
 - **.env** 基础环境
 - **.env.development** 开发环境
 - **.env.production** 生产环境
+- 
+## 开始使用
+
+```sh
+# 克隆项目
+git clone https://github.com/lb1129/l-project.git
+
+# 清空src目录（保留main.ts）
+
+# 清空main.ts内容
+
+# 加入你的内容
+```
 
 ## License
 
