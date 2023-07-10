@@ -1,0 +1,13 @@
+{
+  "name": "l-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "Viho Lei",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
