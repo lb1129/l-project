@@ -2,8 +2,13 @@
   font-weight: bold;
 }
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  h1, h2, h3, h4, h5, h6 {
+@media (resolution >= 192dpi) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: blue;
   }
 }

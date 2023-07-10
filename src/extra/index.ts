@@ -6,10 +6,10 @@ interface Iuser {
   getName: () => string
 }
 
-export class Viho implements Iuser{
-  name= dataJson.name
-  age= 18
-  getName(){
-      return this.name
+export class Viho implements Iuser {
+  name = dataJson.name
+  age = 18
+  getName() {
+    return this.name
   }
 }

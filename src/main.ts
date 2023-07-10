@@ -1,4 +1,4 @@
-import "core-js"
+import 'core-js'
 import '@/styles/css/global.css'
 import '@/styles/less/text.less'
 import styleLess from '@/styles/less/text.module.less'

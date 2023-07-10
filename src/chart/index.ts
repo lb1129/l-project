@@ -23,7 +23,7 @@ echarts.use([
   DataZoomComponent,
   BarChart,
   CanvasRenderer
-]);
+])
 
 type EChartsOption = echarts.ComposeOption<
   | TitleComponentOption
@@ -32,20 +32,19 @@ type EChartsOption = echarts.ComposeOption<
   | GridComponentOption
   | DataZoomComponentOption
   | BarSeriesOption
->;
+>
 
-export const chartInit = () =>{
+export const chartInit = () => {
   const chartDom = document.createElement('div')
   chartDom.classList.add(styles.chart)
   document.body.appendChild(chartDom)
 
-  const myChart = echarts.init(chartDom);
-  let option: EChartsOption;
-  
-  const dataCount = 5e5;
-  const data = generateData(dataCount);
-  
-  option = {
+  const myChart = echarts.init(chartDom)
+
+  const dataCount = 5e5
+  const data = generateData(dataCount)
+
+  const option: EChartsOption = {
     title: {
       text: echarts.format.addCommas(dataCount) + ' Data',
       left: 10
@@ -100,38 +99,34 @@ export const chartInit = () =>{
         large: true
       }
     ]
-  };
-  
+  }
+
   function generateData(count: number) {
-    let baseValue = Math.random() * 1000;
-    let time = +new Date(2011, 0, 1);
-    let smallBaseValue: number;
-  
+    let baseValue = Math.random() * 1000
+    let time = +new Date(2011, 0, 1)
+    let smallBaseValue: number
+
     function next(idx: number) {
       smallBaseValue =
-        idx % 30 === 0
-          ? Math.random() * 700
-          : smallBaseValue + Math.random() * 500 - 250;
-      baseValue += Math.random() * 20 - 10;
-      return Math.max(0, Math.round(baseValue + smallBaseValue) + 3000);
+        idx % 30 === 0 ? Math.random() * 700 : smallBaseValue + Math.random() * 500 - 250
+      baseValue += Math.random() * 20 - 10
+      return Math.max(0, Math.round(baseValue + smallBaseValue) + 3000)
     }
-  
-    const categoryData = [];
-    const valueData = [];
-  
+
+    const categoryData = []
+    const valueData = []
+
     for (let i = 0; i < count; i++) {
-      categoryData.push(
-        echarts.format.formatTime('yyyy-MM-dd\nhh:mm:ss', time, false)
-      );
-      valueData.push(next(i).toFixed(2));
-      time += 1000;
+      categoryData.push(echarts.format.formatTime('yyyy-MM-dd\nhh:mm:ss', time, false))
+      valueData.push(next(i).toFixed(2))
+      time += 1000
     }
-  
+
     return {
       categoryData: categoryData,
       valueData: valueData
-    };
+    }
   }
-  
-  option && myChart.setOption(option);
+
+  option && myChart.setOption(option)
 }
