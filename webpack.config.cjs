@@ -65,6 +65,13 @@ const resolveClientEnv = (raw) => {
   }
 }
 
+// corrected-package 需修正的不支持目标浏览器的node_modules包
+const correctedPackage = require(resolveApp('package.json'))['corrected-package']
+let correctedPackageInclude = []
+if (correctedPackage && Array.isArray(correctedPackage)) {
+  correctedPackageInclude = correctedPackage.map((name) => resolveApp(`node_modules/${name}`))
+}
+
 module.exports = {
   entry: [resolveApp('src/main.ts')],
   output: {
@@ -84,23 +91,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolveApp('src'), ...correctedPackageInclude]
+      },
+      {
         test: /\.ts$/,
+        include: [resolveApp('src')],
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    // NOTE usage 对于 node_modules 内的模块不起作用
-                    useBuiltIns: 'entry',
-                    corejs: '3.0'
-                  }
-                ]
-              ]
-            }
-          },
+          'babel-loader',
           {
             loader: 'ts-loader',
             options: {
