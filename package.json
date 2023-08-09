@@ -65,17 +65,6 @@
     "echarts": "^5.4.2",
     "lodash-es": "^4.17.21"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix",
     "*.{css,less}": "stylelint --fix",
